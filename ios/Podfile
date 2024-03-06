@@ -28,6 +28,8 @@ end
 target 'AwesomeProject' do
   config = use_native_modules!
 
+  flags = get_default_flags()
+
   use_react_native!(
     :path => config[:reactNativePath],
     # Enables Flipper.
@@ -36,6 +38,7 @@ target 'AwesomeProject' do
     # you should disable the next line.
     :flipper_configuration => flipper_config,
     :hermes_enabled => false,
+    :fabric_enabled => flags[:fabric_enabled],
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
